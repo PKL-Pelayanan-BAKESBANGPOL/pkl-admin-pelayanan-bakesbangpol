@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Poppins";
+}
+
+/* Ensure the sidebar sticks to the side */
+.sidebar {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  background-color: #fff; /* or any color */
+  z-index: 1000;
+}
+
+.content {
+  margin-left: 250px; /* Adjust based on sidebar width */
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+    margin-top: 100px; /* Adjust based on sidebar height */
+  }
+}
