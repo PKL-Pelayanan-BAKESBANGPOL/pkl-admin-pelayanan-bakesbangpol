@@ -55,6 +55,11 @@ export default function Dashboard() {
     }
   };
 
+  // Menggulir ke atas saat komponen dimuat
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="flex min-h-screen">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
@@ -65,7 +70,7 @@ export default function Dashboard() {
               <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
                 Dashboard
               </h1>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-1 lg:grid-cols-2">
                 {/* Card 1 */}
                 {loading ? (
                   <CardSkeleton />
@@ -94,7 +99,7 @@ export default function Dashboard() {
                 ) : (
                   <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col border border-gray-200 h-full">
                     <div className="flex items-center mb-4">
-                      <GiFiles className="text-6xl text-orange-500 mr-4 flex-shrink-0" />
+                      <GiFiles className="text-7xl text-orange-500 mr-4 flex-shrink-0" />
                       <div>
                         <div className="text-gray-600 text-base md:text-lg mb-1">
                           Total Ajuan Magang, PKL, KKN

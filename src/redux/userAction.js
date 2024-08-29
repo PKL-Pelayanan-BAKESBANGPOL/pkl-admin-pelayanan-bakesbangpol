@@ -4,7 +4,6 @@ import { setUsername } from "./userReducer";
 
 export const getUser = () => async (dispatch, getState) => {
   const { token } = getState().login; // Mengambil token dari state login
-
   try {
     const response = await axios.get(
       `${import.meta.env.VITE_REACT_APP_SERVER}/profile`,
@@ -19,7 +18,7 @@ export const getUser = () => async (dispatch, getState) => {
     dispatch(setUsername(username));
   } catch (error) {
     console.error("Failed to fetch user data:", error);
-    toast("Terjadi kesalahan!", {
+    toast("Terjadi kesalahan! Tidak dapat mendapatkan username.", {
       style: {
         background: "#FF0000",
         color: "#FFFFFF",

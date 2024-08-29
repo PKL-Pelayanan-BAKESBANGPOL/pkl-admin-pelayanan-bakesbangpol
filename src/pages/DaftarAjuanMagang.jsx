@@ -11,6 +11,7 @@ import TambahData from "./TambahAjuanMagang";
 Modal.setAppElement("#root");
 
 export default function DaftarAjuanMagang() {
+  const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -21,9 +22,8 @@ export default function DaftarAjuanMagang() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isDateFilterModalOpen, setIsDateFilterModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -192,6 +192,11 @@ export default function DaftarAjuanMagang() {
   const handleViewClick = (task) => {
     navigate("/detail-ajuan-magang/pkl/kkn", { state: { formData: task } });
   };
+
+  // Menggulir ke atas saat komponen dimuat
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="flex flex-col md:flex-row">
@@ -386,7 +391,7 @@ export default function DaftarAjuanMagang() {
                       type="date"
                       value={filterDate}
                       onChange={(e) => setFilterDate(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg p-2 text-gray-700 bg-gray-50 focus:border-[#2A629A] focus:ring-1 focus:outline-none transition duration-150"
+                      className="w-full border border-gray-300 rounded-lg p-1.5 text-gray-700 bg-gray-50 focus:border-[#2A629A] hover:border-[#2A629A] focus:outline-none transition duration-150"
                     />
                   </div>
                 </div>
@@ -395,7 +400,7 @@ export default function DaftarAjuanMagang() {
                 <div className="flex items-center justify-between p-4 md:p-5 border-t border-gray-200 rounded-b">
                   <button
                     onClick={handleClearFilter}
-                    className="py-1.5 px-4 me-3 text-sm md:text-base font-medium text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-200"
+                    className="py-1.5 px-4 me-3 text-sm md:text-base font-medium text-gray-900 bg-white rounded-full border border-gray-300 hover:bg-gray-200"
                   >
                     Hapus Filter
                   </button>
@@ -404,7 +409,7 @@ export default function DaftarAjuanMagang() {
                       setIsDateFilterModalOpen(false);
                       handleDateFilter({ target: { value: filterDate } });
                     }}
-                    className="text-white bg-[#2A629A] hover:bg-[#003285] font-medium rounded-lg text-sm md:text-base px-4 py-1.5 text-center"
+                    className="text-white bg-[#2A629A] hover:bg-[#003285] border border-gray-300 font-medium rounded-full text-sm md:text-base px-4 py-1.5 text-center"
                   >
                     Terapkan
                   </button>

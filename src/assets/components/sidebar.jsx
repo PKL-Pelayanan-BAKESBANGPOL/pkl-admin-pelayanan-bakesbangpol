@@ -71,23 +71,27 @@ const ConfirmationModal = ({ show, onClose, onConfirm }) => {
           {/* Modal Body */}
           <div className="p-4 md:p-5 space-y-4">
             <p className="text-sm md:text-base leading-relaxed text-gray-500">
-              Apakah Anda yakin ingin keluar?
+              Apakah Anda yakin ingin{" "}
+              <span className="text-[#FF0000] font-medium text-sm md:text-base">
+                keluar
+              </span>
+              <span className="text-gray-500 text-sm md:text-base">?</span>
             </p>
           </div>
 
           {/* Modal Footer */}
-          <div className="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b">
+          <div className="flex items-center justify-end p-4 md:p-5 border-t border-gray-300 rounded-b">
             <button
               onClick={onClose}
-              className="py-1.5 px-4 me-3 text-sm md:text-base font-medium text-gray-900 bg-white rounded-lg border hover:bg-gray-200"
+              className="py-1.5 px-6 me-3 text-sm md:text-base font-medium text-gray-900 bg-white rounded-full border hover:bg-gray-200"
             >
               Batal
             </button>
             <button
               onClick={onConfirm}
-              className="text-white bg-[#FF0000] hover:bg-red-600 font-medium rounded-lg text-sm md:text-base px-7 py-1.5 text-center"
+              className="text-white bg-[#FF0000] hover:bg-red-600 border font-medium rounded-full text-sm md:text-base px-5 py-1.5 text-center"
             >
-              Ya
+              Keluar
             </button>
           </div>
         </div>
@@ -144,7 +148,7 @@ export default function Sidebar() {
       <div className="md:hidden p-4">
         <button
           type="button"
-          className="text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          className="text-gray-500 hover:text-[#86B6F6] focus:outline-none"
           onClick={() => setSidebarOpen(true)}
         >
           <span className="sr-only">Open sidebar</span>
@@ -155,24 +159,28 @@ export default function Sidebar() {
       {/* Mobile Sidebar */}
       <div
         className={`fixed inset-0 z-40 flex ${
-          sidebarOpen ? "block" : "hidden"
-        }`}
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out`}
       >
         <div
           className="fixed inset-0 bg-gray-600 bg-opacity-75"
           onClick={() => setSidebarOpen(false)}
         ></div>
         <div className="relative flex-1 flex flex-col max-w-xs w-full bg-gradient-to-b from-[#86B6F6] to-[#003285] overflow-y-auto">
-          <div className="absolute top-0 right-0 -mr-12 pt-2">
+          <div className="absolute top-0 left-0 ml-3 pt-2">
             <button
               type="button"
-              className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="flex items-center justify-center p-2 focus:outline-none"
               onClick={() => setSidebarOpen(false)}
             >
               <span className="sr-only">Close sidebar</span>
-              <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+              <XMarkIcon
+                className="h-6 w-6 text-white hover:bg-white/30 hover:scale-110 hover:rounded-md transition-transform duration-200 ease-in-out"
+                aria-hidden="true"
+              />
             </button>
           </div>
+
           <div className="flex-shrink-0 flex flex-col items-center px-4 py-4">
             <img
               src={Bakesbangpol}
@@ -206,6 +214,7 @@ export default function Sidebar() {
               ))}
             </div>
           </div>
+
           {/* Nama Pengguna dengan Dropdown */}
           {username && (
             <div className="mt-auto flex-shrink-0 px-4 pb-4">
