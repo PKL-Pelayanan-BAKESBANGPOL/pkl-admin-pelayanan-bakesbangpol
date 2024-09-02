@@ -80,7 +80,7 @@ const ConfirmationModal = ({ show, onClose, onConfirm }) => {
           </div>
 
           {/* Modal Footer */}
-          <div className="flex items-center justify-end p-4 md:p-5 border-t border-gray-300 rounded-b">
+          <div className="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b">
             <button
               onClick={onClose}
               className="py-1.5 px-6 me-3 text-sm md:text-base font-medium text-gray-900 bg-white rounded-full border hover:bg-gray-200"

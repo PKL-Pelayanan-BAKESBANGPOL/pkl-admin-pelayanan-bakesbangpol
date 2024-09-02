@@ -120,7 +120,7 @@ export default function DaftarAjuanMagang() {
       setTasks(updatedTasks);
       setFilteredTasks(updatedTasks); // Update filteredTasks juga
     } catch (error) {
-      console.error("Failed to update task:", error);
+      // console.error("Failed to update task:", error);
     } finally {
       setShowEditTask(false);
       setEditingTask(null);

@@ -39,7 +39,7 @@ export default function AdminProfil() {
     e.preventDefault();
     if (validate()) {
       // Handle form submission
-      console.log({ username, password, email, fullname });
+      // console.log({ username, password, email, fullname });
       // Optionally reset form and errors
       setErrors({});
     }

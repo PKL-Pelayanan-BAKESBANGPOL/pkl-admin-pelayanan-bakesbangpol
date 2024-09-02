@@ -32,7 +32,7 @@ export default function Login() {
 
     // Jika kolom nama pengguna tidak diisi
     if (username === "") {
-      toast("Mohon isi kolom nama pengguna!", {
+      toast("Mohon masukkan nama pengguna!", {
         style: {
           background: "#FF0000",
           color: "#FFFFFF",
@@ -50,7 +50,7 @@ export default function Login() {
 
     // Jika kolom kata sandi tidak diisi
     if (password === "") {
-      toast("Mohon isi kata sandi!", {
+      toast("Mohon masukkan kata sandi!", {
         style: {
           background: "#FF0000",
           color: "#FFFFFF",
@@ -68,7 +68,7 @@ export default function Login() {
 
     // Jika kolom nama pengguna dan kata sandi tidak diisi
     if (username === "" || password === "") {
-      toast("Mohon isi nama pengguna dan kata sandi!", {
+      toast("Mohon masukkan nama pengguna dan kata sandi!", {
         style: {
           background: "#FF0000",
           color: "#FFFFFF",
@@ -187,7 +187,11 @@ export default function Login() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="bg-[#2A629A] text-white font-medium w-full py-2 rounded-full hover:bg-[#003285] transition duration-300 flex items-center justify-center"
+                    className={`${
+                      loading
+                        ? "bg-[#003285]"
+                        : "bg-[#2A629A] hover:bg-[#003285]"
+                    } text-white text-sm md:text-base font-medium w-full py-2 rounded-full transition duration-300 flex items-center justify-center`}
                   >
                     {loading ? (
                       <svg

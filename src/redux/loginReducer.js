@@ -8,7 +8,6 @@ const initialState = {
   user: null,
   loading: false,
   isLoggedIn: false,
-  // login: null,
 };
 
 const loginSlicer = createSlice({
@@ -36,16 +35,6 @@ const loginSlicer = createSlice({
     setIsLoggedIn: (state, action) => {
       state.isLoggedIn = action.payload;
     },
-    // setLogin: (state, action) => {
-    //   state.login = action.payload;
-    // },
-    // logout: (state) => {
-    //   state.token = null;
-    //   state.isLoggedIn = false;
-    //   state.user = null;
-    //   state.login = null;
-    //   state.isAuthenticated = false;
-    // },
   },
 });
 

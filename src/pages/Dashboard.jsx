@@ -48,7 +48,7 @@ export default function Dashboard() {
       setTotalAjuanPenelitian(totalPenelitian);
       setTotalAjuanMagang(totalMagang);
     } catch (error) {
-      console.error("Failed to fetch data:", error);
+      // console.error("Failed to fetch data:", error);
     } finally {
       // Set loading false after fetching
       setLoading(false);

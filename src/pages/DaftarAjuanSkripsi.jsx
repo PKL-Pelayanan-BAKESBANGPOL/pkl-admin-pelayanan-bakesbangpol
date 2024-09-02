@@ -43,7 +43,7 @@ export default function DaftarAjuanSkripsi() {
       setFilteredTasks(fetchedData);
     } catch (error) {
       setError("Failed to fetch data. Please try again later."); // Set error message
-      console.log("error", error);
+      // console.log("error", error);
     } finally {
       setIsLoading(false); // Stop loading
     }

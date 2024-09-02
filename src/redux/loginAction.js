@@ -50,22 +50,19 @@ export const login = (data, navigate) => async (dispatch, getState) => {
   } catch (error) {
     // Cek jika error dari respons server adalah "Username atau Password salah"
     if (error?.response?.data?.message === "Username atau Password salah") {
-      toast.error(
-        "Maaf, nama pengguna atau kata sandi salah! Silakan coba lagi.",
-        {
-          icon: null,
-          style: {
-            background: "#FF0000",
-            color: "#FFFFFF",
-            borderRadius: "10px",
-            fontSize: "14px",
-            textAlign: "center",
-            maxWidth: "900px",
-          },
-          position: "top-center",
-          duration: 3000,
-        }
-      );
+      toast.error("Nama pengguna atau kata sandi salah! Silakan coba lagi.", {
+        icon: null,
+        style: {
+          background: "#FF0000",
+          color: "#FFFFFF",
+          borderRadius: "10px",
+          fontSize: "14px",
+          textAlign: "center",
+          maxWidth: "900px",
+        },
+        position: "top-center",
+        duration: 3000,
+      });
     } else {
       // Jika error lain yang tidak dikenali
       toast.error(
@@ -84,12 +81,12 @@ export const login = (data, navigate) => async (dispatch, getState) => {
           duration: 3000,
         }
       );
-      console.log(
-        "Cek error: ",
-        error.response?.data,
-        error.response?.status,
-        error.message
-      );
+      // console.log(
+      //   "Cek error: ",
+      //   error.response?.data,
+      //   error.response?.status,
+      //   error.message
+      // );
     }
   } finally {
     dispatch(setLoading(false));
@@ -140,14 +137,14 @@ export const checkToken = (navigate) => (dispatch, getState) => {
         position: "top-center",
         duration: 3000,
       });
-    }, 10);
+    });
   }
 };
 
 // Fungsi untuk mengecek jika akun admin sudah login
 export const checkIsLoggedIn = (navigate) => (dispatch, getState) => {
   const { token, isLoggedIn, username } = getState().login;
-  if (token) {
+  if (token && isLoggedIn) {
     navigate("/beranda");
     setTimeout(() => {
       toast(`Anda sudah masuk sebagai ${username}.`, {
@@ -163,6 +160,6 @@ export const checkIsLoggedIn = (navigate) => (dispatch, getState) => {
         position: "top-center",
         duration: 3000,
       });
-    }, 1);
+    });
   }
 };

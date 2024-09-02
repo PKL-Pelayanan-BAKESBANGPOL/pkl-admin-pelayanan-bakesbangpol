@@ -36,7 +36,7 @@ export default function TambahData({
       if (response && response.data) {
         const fetchedData = response.data[0];
         const readableDate = formatDateTime(fetchedData.date);
-        console.log("Readable Date:", readableDate); // Debugging log
+        // console.log("Readable Date:", readableDate);
         setDate(readableDate); // Set dalam format yang baru
         setTaskName(fetchedData.name || "");
         setNama(fetchedData.nama || "");
@@ -44,13 +44,13 @@ export default function TambahData({
         setStatusAjuan(fetchedData.statusAjuan || "Belum Diproses");
       }
     } catch (error) {
-      console.error("Failed to fetch data:", error);
+      // console.error("Failed to fetch data:", error);
     }
   };
 
   useEffect(() => {
     if (initialData) {
-      console.log("Initial data in TambahDataSkripsi:", initialData); // Debugging log
+      // console.log("Initial data in TambahDataSkripsi:", initialData);
       setId(initialData.id || null);
       setTaskName(initialData.name || "");
       setDate(formatDateTime(initialData.date || ""));
@@ -63,7 +63,7 @@ export default function TambahData({
     }
   }, [initialData]);
 
-  console.log("ID after setting:", id); // Debugging log
+  // console.log("ID after setting:", id);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,10 +83,10 @@ export default function TambahData({
       // completed: initialData ? initialData.completed : false,
     };
 
-    console.log("Submitting Task:", updatedTask);
+    // console.log("Submitting Task:", updatedTask);
 
     if (!id) {
-      console.error("ID is required for updating.");
+      // console.error("ID is required for updating.");
       alert("ID is missing. Cannot update.");
       return;
     }
@@ -101,7 +101,7 @@ export default function TambahData({
         if (response && response.data) {
           onAdd(response.data); // Send updated data to parent component
         } else {
-          console.error("Invalid response format", response);
+          // console.error("Invalid response format", response);
         }
       } else {
         // Add new data if not editing
@@ -112,19 +112,19 @@ export default function TambahData({
         );
         if (response && response.data) {
           onAdd(response.data); // Send new data to parent component
-          console.log("response data", response.data);
+          // console.log("response data", response.data);
         } else {
-          console.error("Invalid response format", response);
+          // console.error("Invalid response format", response);
         }
       }
       onCancel(); // Close modal after submitting
     } catch (error) {
-      console.error(
-        "Failed to submit task:",
-        error?.response?.data,
-        error?.response?.status,
-        error?.response?.message
-      );
+      // console.error(
+      //   "Failed to submit task:",
+      //   error?.response?.data,
+      //   error?.response?.status,
+      //   error?.response?.message
+      // );
     }
   };
 
